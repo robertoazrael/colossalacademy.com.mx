@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portal principal de Colossal Academy. Elige entre Primary School y Nursery School.">
-  <title>Colossal Academy | Portal de Campus</title>
+  <meta name="description" content="Colossal Academy main portal. Choose between Primary School and Nursery School.">
+  <title>Colossal Academy | Campus Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=New+Tegomin&display=swap" rel="stylesheet">
@@ -152,6 +152,62 @@
       color: var(--purple);
       background: rgba(109, 103, 200, 0.08);
       outline: none;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-shrink: 0;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.2rem;
+      border-radius: 999px;
+      background: rgba(109, 103, 200, 0.06);
+      border: 1px solid rgba(109, 103, 200, 0.10);
+      box-shadow: 0 8px 20px rgba(87, 141, 175, 0.05);
+    }
+
+    .lang-option {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      min-width: 3.2rem;
+      min-height: 2.2rem;
+      padding: 0.45rem 0.6rem;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: #4b5563;
+      font-family: inherit;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .lang-option:hover,
+    .lang-option:focus-visible {
+      color: var(--purple);
+      outline: none;
+    }
+
+    .lang-option[aria-pressed="true"] {
+      background: #ffffff;
+      color: var(--purple);
+      box-shadow: 0 8px 18px rgba(109, 103, 200, 0.10);
+    }
+
+    .lang-flag {
+      font-size: 0.82rem;
+      line-height: 1;
     }
 
     .hero {
@@ -577,6 +633,29 @@
       }
     }
 
+    @media (max-width: 479px) {
+      .topbar-inner {
+        gap: 0.75rem;
+      }
+
+      .brand-title {
+        font-size: 1rem;
+      }
+
+      .brand-subtitle {
+        font-size: 0.69rem;
+      }
+
+      .nav-link {
+        padding-inline: 0.75rem;
+      }
+
+      .lang-option {
+        min-width: 2.9rem;
+        padding-inline: 0.5rem;
+      }
+    }
+
     @media (min-width: 1024px) {
       .hero-layout {
         grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.72fr);
@@ -613,7 +692,7 @@
     <header class="topbar">
       <div class="container">
         <div class="topbar-inner reveal">
-          <a class="brand" href="#campuses" aria-label="Ir a los campus de Colossal Academy">
+          <a class="brand" href="#campuses" aria-label="Go to Colossal Academy campuses" data-i18n-aria-label="brand_link_aria">
             <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
               <defs>
                 <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -628,12 +707,24 @@
             </svg>
             <span class="brand-copy">
               <span class="brand-title">Colossal Academy</span>
-              <span class="brand-subtitle">Portal de campus</span>
+              <span class="brand-subtitle" data-i18n="brand_subtitle">Campus Portal</span>
             </span>
           </a>
-          <nav aria-label="Navegación principal">
-            <a class="nav-link" href="#campuses">Ver campus</a>
-          </nav>
+          <div class="topbar-actions">
+            <nav aria-label="Primary navigation" data-i18n-aria-label="nav_aria">
+              <a class="nav-link" href="#campuses" data-i18n="nav_view_campuses">View campuses</a>
+            </nav>
+            <div class="lang-switch" role="group" aria-label="Language selector">
+              <button class="lang-option" type="button" data-lang-option="en" aria-pressed="true" aria-label="Switch language to English">
+                <span class="lang-flag" aria-hidden="true">🇺🇸</span>
+                <span>EN</span>
+              </button>
+              <button class="lang-option" type="button" data-lang-option="es" aria-pressed="false" aria-label="Switch language to Spanish">
+                <span class="lang-flag" aria-hidden="true">🇲🇽</span>
+                <span>ES</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </header>
@@ -643,23 +734,22 @@
         <div class="container">
           <div class="hero-layout">
             <div class="hero-copy reveal delay-1">
-              <span class="eyebrow">Colossal Academy</span>
-              <h1>Dos campus, una misma comunidad educativa.</h1>
-              <p>
-                Este portal te ayuda a entrar al sitio correcto en pocos segundos.
-                Elige el campus que quieres visitar y continúa directamente a su experiencia dedicada.
+              <span class="eyebrow" data-i18n="hero_eyebrow">Colossal Academy</span>
+              <h1 data-i18n="hero_title">Two campuses, one shared educational community.</h1>
+              <p data-i18n="hero_body">
+                This portal helps you reach the right site in just a few seconds. Choose the campus you want to visit and continue directly to its dedicated experience.
               </p>
               <div class="hero-actions">
-                <a class="button button-primary" href="#campuses">Elegir campus</a>
-                <a class="button button-secondary" href="https://nursery.colossalacademy.com.mx">Ir a Nursery School</a>
+                <a class="button button-primary" href="#campuses" data-i18n="hero_cta_primary">Choose campus</a>
+                <a class="button button-secondary" href="https://nursery.colossalacademy.com.mx" data-i18n="hero_cta_secondary">Go to Nursery School</a>
               </div>
             </div>
 
-            <aside class="hero-card reveal delay-2" aria-label="Resumen del portal">
-              <div class="hero-card-label gradient-text">Acceso rápido</div>
-              <h2 class="hero-card-title">Una entrada clara para familias que llegan al dominio principal.</h2>
-              <p class="hero-card-text">
-                Sin desvíos ni secciones largas. Solo la elección correcta entre Primary School y Nursery School.
+            <aside class="hero-card reveal delay-2" aria-label="Portal summary" data-i18n-aria-label="hero_card_aria">
+              <div class="hero-card-label gradient-text" data-i18n="hero_card_label">Quick access</div>
+              <h2 class="hero-card-title" data-i18n="hero_card_title">A clear entry point for families arriving at the main domain.</h2>
+              <p class="hero-card-text" data-i18n="hero_card_text">
+                No detours and no long sections. Just the right choice between Primary School and Nursery School.
               </p>
               <ul class="hero-card-points">
                 <li>
@@ -667,21 +757,21 @@
                     <circle cx="10" cy="10" r="10" fill="#20bb96"></circle>
                     <path d="M5.5 10.3 8.6 13.1 14.4 7.2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
-                  Mismo lenguaje visual del sitio Nursery.
+                  <span data-i18n="hero_point_1">Shared visual language with the Nursery site.</span>
                 </li>
                 <li>
                   <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
                     <circle cx="10" cy="10" r="10" fill="#578daf"></circle>
                     <path d="M5.5 10.3 8.6 13.1 14.4 7.2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
-                  Decisión visible desde el primer scroll.
+                  <span data-i18n="hero_point_2">The decision is visible from the first scroll.</span>
                 </li>
                 <li>
                   <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
                     <circle cx="10" cy="10" r="10" fill="#6d67c8"></circle>
                     <path d="M5.5 10.3 8.6 13.1 14.4 7.2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
-                  Página estática ligera y lista para Netlify.
+                  <span data-i18n="hero_point_3">Lightweight static page ready for Netlify.</span>
                 </li>
               </ul>
             </aside>
@@ -692,17 +782,17 @@
       <section class="campus-section" id="campuses" aria-labelledby="campus-heading">
         <div class="container">
           <div class="section-heading reveal delay-2">
-            <span class="eyebrow">Selecciona tu destino</span>
-            <h2 id="campus-heading">Elige el campus que necesitas visitar.</h2>
-            <p>
-              Ambos accesos tienen la misma jerarquía para que la decisión sea inmediata, clara y confiable.
+            <span class="eyebrow" data-i18n="section_eyebrow">Select your destination</span>
+            <h2 id="campus-heading" data-i18n="section_title">Choose the campus you need to visit.</h2>
+            <p data-i18n="section_body">
+              Both options share the same hierarchy so the choice feels immediate, clear, and trustworthy.
             </p>
           </div>
 
           <div class="campus-grid">
             <article class="campus-card reveal delay-2">
               <div class="card-visual">
-                <div class="card-badge">Primary School</div>
+                <div class="card-badge" data-i18n="primary_badge">Primary School</div>
                 <svg class="card-illustration" viewBox="0 0 160 160" aria-hidden="true">
                   <circle cx="80" cy="80" r="68" fill="rgba(255,255,255,0.16)"></circle>
                   <path d="M46 108V66l34-17 34 17v42" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -712,18 +802,18 @@
                 </svg>
               </div>
               <div class="card-body">
-                <h3>Primary School</h3>
-                <p>Primary education campus.</p>
+                <h3 data-i18n="primary_title">Primary School</h3>
+                <p data-i18n="primary_description">Primary education campus.</p>
                 <div class="card-footer">
-                  <span class="card-meta">Campus académico</span>
-                  <a class="button button-primary" href="https://primary.colossalacademy.com.mx" aria-label="Visitar Primary School">Visitar campus</a>
+                  <span class="card-meta" data-i18n="primary_meta">Academic campus</span>
+                  <a class="button button-primary" href="https://primary.colossalacademy.com.mx" aria-label="Visit Primary School" data-i18n="visit_campus" data-i18n-aria-label="primary_visit_aria">Visit campus</a>
                 </div>
               </div>
             </article>
 
             <article class="campus-card reveal delay-3">
               <div class="card-visual">
-                <div class="card-badge">Nursery School</div>
+                <div class="card-badge" data-i18n="nursery_badge">Nursery School</div>
                 <svg class="card-illustration" viewBox="0 0 160 160" aria-hidden="true">
                   <circle cx="80" cy="80" r="68" fill="rgba(255,255,255,0.16)"></circle>
                   <path d="M80 46c18.8 0 34 15.2 34 34 0 24.2-20.5 34-34 34S46 104.2 46 80C46 61.2 61.2 46 80 46Z" fill="none" stroke="#fff" stroke-width="8"></path>
@@ -734,11 +824,11 @@
                 </svg>
               </div>
               <div class="card-body">
-                <h3>Nursery School</h3>
-                <p>Early childhood education campus.</p>
+                <h3 data-i18n="nursery_title">Nursery School</h3>
+                <p data-i18n="nursery_description">Early childhood education campus.</p>
                 <div class="card-footer">
-                  <span class="card-meta">Primera infancia</span>
-                  <a class="button button-primary" href="https://nursery.colossalacademy.com.mx" aria-label="Visitar Nursery School">Visitar campus</a>
+                  <span class="card-meta" data-i18n="nursery_meta">Early childhood</span>
+                  <a class="button button-primary" href="https://nursery.colossalacademy.com.mx" aria-label="Visit Nursery School" data-i18n="visit_campus" data-i18n-aria-label="nursery_visit_aria">Visit campus</a>
                 </div>
               </div>
             </article>
@@ -766,15 +856,15 @@
               </svg>
               <span class="brand-copy">
                 <span class="brand-title">Colossal Academy</span>
-                <span class="brand-subtitle">Portal principal</span>
+                <span class="brand-subtitle" data-i18n="footer_brand_subtitle">Main portal</span>
               </span>
             </div>
-            <p>Una navegación breve y clara para orientar a las familias entre los dos campus del colegio.</p>
+            <p data-i18n="footer_text">A brief, clear navigation point for families choosing between the school's two campuses.</p>
           </div>
 
-          <div class="footer-links" aria-label="Enlaces a campus">
-            <a href="https://primary.colossalacademy.com.mx">Primary School</a>
-            <a href="https://nursery.colossalacademy.com.mx">Nursery School</a>
+          <div class="footer-links" aria-label="Campus links" data-i18n-aria-label="footer_links_aria">
+            <a href="https://primary.colossalacademy.com.mx" data-i18n="primary_title">Primary School</a>
+            <a href="https://nursery.colossalacademy.com.mx" data-i18n="nursery_title">Nursery School</a>
           </div>
 
           <div class="footer-copy">© 2026 Colossal Academy</div>
@@ -782,5 +872,187 @@
       </div>
     </footer>
   </div>
+  <script>
+    (function () {
+      var translations = {
+        en: {
+          page_title: "Colossal Academy | Campus Portal",
+          page_description: "Colossal Academy main portal. Choose between Primary School and Nursery School.",
+          brand_subtitle: "Campus Portal",
+          footer_brand_subtitle: "Main portal",
+          brand_link_aria: "Go to Colossal Academy campuses",
+          nav_aria: "Primary navigation",
+          nav_view_campuses: "View campuses",
+          hero_eyebrow: "Colossal Academy",
+          hero_title: "Two campuses, one shared educational community.",
+          hero_body: "This portal helps you reach the right site in just a few seconds. Choose the campus you want to visit and continue directly to its dedicated experience.",
+          hero_cta_primary: "Choose campus",
+          hero_cta_secondary: "Go to Nursery School",
+          hero_card_aria: "Portal summary",
+          hero_card_label: "Quick access",
+          hero_card_title: "A clear entry point for families arriving at the main domain.",
+          hero_card_text: "No detours and no long sections. Just the right choice between Primary School and Nursery School.",
+          hero_point_1: "Shared visual language with the Nursery site.",
+          hero_point_2: "The decision is visible from the first scroll.",
+          hero_point_3: "Lightweight static page ready for Netlify.",
+          section_eyebrow: "Select your destination",
+          section_title: "Choose the campus you need to visit.",
+          section_body: "Both options share the same hierarchy so the choice feels immediate, clear, and trustworthy.",
+          primary_badge: "Primary School",
+          primary_title: "Primary School",
+          primary_description: "Primary education campus.",
+          primary_meta: "Academic campus",
+          primary_visit_aria: "Visit Primary School",
+          nursery_badge: "Nursery School",
+          nursery_title: "Nursery School",
+          nursery_description: "Early childhood education campus.",
+          nursery_meta: "Early childhood",
+          nursery_visit_aria: "Visit Nursery School",
+          visit_campus: "Visit campus",
+          footer_text: "A brief, clear navigation point for families choosing between the school's two campuses.",
+          footer_links_aria: "Campus links",
+          lang_switch_label: "Language selector",
+          lang_en_label: "Switch language to English",
+          lang_es_label: "Switch language to Spanish"
+        },
+        es: {
+          page_title: "Colossal Academy | Portal de Campus",
+          page_description: "Portal principal de Colossal Academy. Elige entre Primary School y Nursery School.",
+          brand_subtitle: "Portal de campus",
+          footer_brand_subtitle: "Portal principal",
+          brand_link_aria: "Ir a los campus de Colossal Academy",
+          nav_aria: "Navegación principal",
+          nav_view_campuses: "Ver campus",
+          hero_eyebrow: "Colossal Academy",
+          hero_title: "Dos campus, una misma comunidad educativa.",
+          hero_body: "Este portal te ayuda a entrar al sitio correcto en pocos segundos. Elige el campus que quieres visitar y continúa directamente a su experiencia dedicada.",
+          hero_cta_primary: "Elegir campus",
+          hero_cta_secondary: "Ir a Nursery School",
+          hero_card_aria: "Resumen del portal",
+          hero_card_label: "Acceso rápido",
+          hero_card_title: "Una entrada clara para familias que llegan al dominio principal.",
+          hero_card_text: "Sin desvíos ni secciones largas. Solo la elección correcta entre Primary School y Nursery School.",
+          hero_point_1: "Mismo lenguaje visual del sitio Nursery.",
+          hero_point_2: "Decisión visible desde el primer scroll.",
+          hero_point_3: "Página estática ligera y lista para Netlify.",
+          section_eyebrow: "Selecciona tu destino",
+          section_title: "Elige el campus que necesitas visitar.",
+          section_body: "Ambos accesos tienen la misma jerarquía para que la decisión sea inmediata, clara y confiable.",
+          primary_badge: "Primary School",
+          primary_title: "Primary School",
+          primary_description: "Campus de educación primaria.",
+          primary_meta: "Campus académico",
+          primary_visit_aria: "Visitar Primary School",
+          nursery_badge: "Nursery School",
+          nursery_title: "Nursery School",
+          nursery_description: "Campus de educación para primera infancia.",
+          nursery_meta: "Primera infancia",
+          nursery_visit_aria: "Visitar Nursery School",
+          visit_campus: "Visitar campus",
+          footer_text: "Una navegación breve y clara para orientar a las familias entre los dos campus del colegio.",
+          footer_links_aria: "Enlaces a campus",
+          lang_switch_label: "Selector de idioma",
+          lang_en_label: "Cambiar idioma a inglés",
+          lang_es_label: "Cambiar idioma a español"
+        }
+      };
+
+      var storageKey = "colossal-academy-language";
+      var defaultLanguage = "en";
+      var titleNode = document.querySelector("title");
+      var descriptionNode = document.querySelector('meta[name="description"]');
+      var textNodes = document.querySelectorAll("[data-i18n]");
+      var ariaNodes = document.querySelectorAll("[data-i18n-aria-label]");
+      var toggleRoot = document.querySelector(".lang-switch");
+      var toggleButtons = document.querySelectorAll("[data-lang-option]");
+
+      function applyLanguage(lang) {
+        var dict = translations[lang] || translations[defaultLanguage];
+
+        document.documentElement.lang = lang;
+
+        if (titleNode && dict.page_title) {
+          titleNode.textContent = dict.page_title;
+        }
+
+        if (descriptionNode && dict.page_description) {
+          descriptionNode.setAttribute("content", dict.page_description);
+        }
+
+        textNodes.forEach(function (node) {
+          var key = node.getAttribute("data-i18n");
+          if (dict[key]) {
+            node.textContent = dict[key];
+          }
+        });
+
+        ariaNodes.forEach(function (node) {
+          var key = node.getAttribute("data-i18n-aria-label");
+          if (dict[key]) {
+            node.setAttribute("aria-label", dict[key]);
+          }
+        });
+
+        if (toggleRoot) {
+          toggleRoot.setAttribute("aria-label", dict.lang_switch_label);
+        }
+
+        toggleButtons.forEach(function (button) {
+          var isActive = button.getAttribute("data-lang-option") === lang;
+          button.setAttribute("aria-pressed", String(isActive));
+          button.setAttribute("tabindex", isActive ? "0" : "-1");
+          if (button.getAttribute("data-lang-option") === "en") {
+            button.setAttribute("aria-label", dict.lang_en_label);
+          }
+          if (button.getAttribute("data-lang-option") === "es") {
+            button.setAttribute("aria-label", dict.lang_es_label);
+          }
+        });
+      }
+
+      function readStoredLanguage() {
+        try {
+          return localStorage.getItem(storageKey);
+        } catch (error) {
+          return null;
+        }
+      }
+
+      function writeStoredLanguage(lang) {
+        try {
+          localStorage.setItem(storageKey, lang);
+        } catch (error) {
+          // Ignore storage failures and keep the in-memory language state.
+        }
+      }
+
+      function setLanguage(lang) {
+        applyLanguage(lang);
+        writeStoredLanguage(lang);
+      }
+
+      var savedLanguage = readStoredLanguage();
+      var initialLanguage = savedLanguage && translations[savedLanguage] ? savedLanguage : defaultLanguage;
+      applyLanguage(initialLanguage);
+
+      toggleButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          setLanguage(button.getAttribute("data-lang-option"));
+        });
+
+        button.addEventListener("keydown", function (event) {
+          if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+            event.preventDefault();
+            var nextLanguage = button.getAttribute("data-lang-option") === "en" ? "es" : "en";
+            var nextButton = document.querySelector('[data-lang-option="' + nextLanguage + '"]');
+            setLanguage(nextLanguage);
+            if (nextButton) {
+              nextButton.focus();
+            }
+          }
+        });
+      });
+    }());
+  </script>
 </body>
 </html>
